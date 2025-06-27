@@ -15,7 +15,7 @@ import BannerImg from '../../../components/Home/Banner/BannerImg';
 const Banner = () => {
     return (
         <div>
-            <Carousel showStatus={false} dynamicHeight={true} autoPlay={true} showThumbs={false} infiniteLoop={true} showArrows={true} useKeyboardArrows={true} stopOnHover={true}>
+            <Carousel showStatus={false} dynamicHeight={true} autoPlay={true} showThumbs={false} infiniteLoop={true} showArrows={true} useKeyboardArrows={true} stopOnHover={true} emulateTouch={true}>
                <BannerImg bannerImg={banner1}/>
                <BannerImg bannerImg={banner2}/>
                <BannerImg bannerImg={banner3}/>
