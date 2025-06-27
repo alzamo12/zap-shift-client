@@ -14,8 +14,8 @@ import LogoSlide from '../../../components/Home/ClientSection/LogoSlide';
 
 const ClientSection = () => {
     return (
-        <section className="py-12 bg-gray-50 space-y-8">
-            <h2 className="card-title justify-center text-secondary text-base md:text-2xl ">We've helped thousands of sales teams</h2>
+        <section className=" bg-gray-50 space-y-8">
+            <h2 className="card-title justify-center text-secondary text-base md:text-2xl ">We've helped thousands of sales teams</h2>
 
             <div className=" mx-auto px-4">
                 <Swiper
