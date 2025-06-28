@@ -1,0 +1,27 @@
+[
+    {
+        "id": 1,
+        "question": "Is it suitable for all ages and body types?",
+        "answer": "Yes. The adjustable design accommodates a wide range of heights and physiques, with customizable straps and padding to ensure a comfortable fit for most adults and adolescents."
+    },
+    {
+        "id": 2,
+        "question": "Does it really help with back pain and posture improvement?",
+        "answer": "Absolutely. The ergonomic support frame and targeted lumbar cushion work together to gently realign your spine, reducing muscle strain and retraining your posture over daily use."
+    },
+    {
+        "id": 3,
+        "question": "Does it have smart features like vibration alerts?",
+        "answer": "Yes, it includes built in motion sensors that trigger a gentle vibration whenever you slouch for more than 30 seconds, prompting you to straighten up."
+    },
+    {
+        "id": 4,
+        "question": "How will I be notified when the product is back in stock?",
+        "answer": "You can sign up with your email or mobile number; we will automatically send you a notification (via email and SMS) the moment the item is available again."
+    },
+    {
+        "id": 5,
+        "question": "How does this posture corrector work?",
+        "answer": "A posture corrector works by providing support and gentle alignment to your shoulders, back, and spine, encouraging you to maintain proper posture throughout the day. Here is how it typically functions: A posture corrector works by providing support and gentle alignment to your shoulders."
+    }
+]
