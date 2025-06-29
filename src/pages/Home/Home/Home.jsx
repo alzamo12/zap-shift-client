@@ -1,8 +1,10 @@
+// import Reviews from "../Reviews/Reviews";
 import Banner from "../Banner/Banner";
 import BecomeAMerchant from "../BecomeAMerchant/BecomeAMerchant";
 import ClientSection from "../ClientSection/ClientSection";
 import FAQ from "../FAQ/FAQ";
 import HowItWorks from "../HowItWorks/HowItWorks";
+import Reviews from "../Reviews/Reviews";
 import Services from "../Services/Services";
 import WhyChoseUs from "../WhyChoseUS/WhyChoseUs";
 
@@ -29,6 +31,9 @@ const Home = () => {
             </div>
             <div className="my-16 md:mt-16 lg:my-24">
                 <FAQ />
+            </div>
+            <div className="my-16 md:mt-16 lg:my-24">
+                <Reviews />
             </div>
         </div>
     );

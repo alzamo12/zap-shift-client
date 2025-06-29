@@ -23,8 +23,8 @@ const FAQ = () => {
                     Enhance posture, mobility, and well-being effortlessly with Posture Pro. Achieve proper alignment, reduce pain, and strengthen your body with ease!
                 </p>
             </div>
-            {questions.map(question => <div>
-                <div key={question.id} className={`collapse peer-checked:bg-blue-500 collapse-arrow 
+            {questions.map(question => <div key={question.id}>
+                <div  className={`collapse peer-checked:bg-blue-500 collapse-arrow 
                 bg-base-100 border border-base-300 ${id === question.id ? "bg-teal-50" : ""} `}>
                     <input onChange={() => setId(question.id)} type="radio" className="peer" name="my-accordion-2" />
                     <div className="collapse-title font-semibold">{question.question}</div>
