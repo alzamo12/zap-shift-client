@@ -30,11 +30,12 @@ const Home = () => {
                 <BecomeAMerchant />
             </div>
             <div className="my-16 md:mt-16 lg:my-24">
-                <FAQ />
-            </div>
-            <div className="my-16 md:mt-16 lg:my-24">
                 <Reviews />
             </div>
+            <div className="my-16 md:mt-16 lg:my-24">
+                <FAQ />
+            </div>
+
         </div>
     );
 };

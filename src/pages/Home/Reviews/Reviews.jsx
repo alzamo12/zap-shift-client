@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 // import { Navigation, Pagination } from "swiper";
-import { Navigation, Pagination } from "swiper/modules";
+import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import "swiper/css/autoplay"; // this line isn’t strictly required, but good practice
+
 import TestimonialCard from "../../../components/Home/TestimonialCard/TestimonialCard";
 
 const Reviews = () => {
@@ -22,11 +24,11 @@ const Reviews = () => {
     return (
         <div className="relative w-full max-w-screen-xl mx-auto px-4 py-16">
             <Swiper
-                modules={[Navigation, Pagination]}
+                modules={[Navigation, Pagination, Autoplay]}
                 spaceBetween={20}
                 slidesPerView={1}
                 breakpoints={{
-                   
+
                     576: {
                         slidesPerView: 2,
                         centeredSlides: true,
@@ -41,6 +43,7 @@ const Reviews = () => {
                     prevEl: ".prev-btn",
                 }}
                 pagination={{ clickable: true }}
+                autoplay={{ delay: 3000, disableOnInteraction: false }}
                 loop
             >
                 {reviews.map((item, idx) => (
