@@ -10,7 +10,7 @@ const NavbarEnd = ({ user, handleLogout }) => {
                     <Link to="/register" className="btn btn-primary text-secondary  font-bold rounded-lg">Sign Up</Link>
                 </div> 
                 :
-                <button onClick={handleLogout}>LogOut</button>   
+                <button className="btn btn-outline border-primary" onClick={handleLogout}>LogOut</button>   
         }
 
         </div>

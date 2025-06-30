@@ -1,8 +1,17 @@
 import React from 'react';
+import useAuth from '../../../hooks/useAuth';
 
 const SocialLogin = () => {
-    const handleSocialLogin = () => {
+    const {googleLogin} = useAuth();
 
+    const handleSocialLogin = () => {
+        googleLogin()
+        .then(() => {
+            alert("user signed in with google Successfully")
+        })
+        .catch(err => {
+            console.error(err)
+        })
     }
     return (
         <div className='text-center'>
