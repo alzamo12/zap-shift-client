@@ -2,7 +2,8 @@ import { useForm } from 'react-hook-form';
 import SocialLogin from '../../../components/Shared/SocialLogin/SocialLogin';
 import { Link } from 'react-router';
 import { TbUserUp } from 'react-icons/tb';
-
+import useAuth from "../../../hooks/useAuth"
+import { GrResume } from 'react-icons/gr';
 const Register = () => {
     const {
         register,
@@ -10,9 +11,17 @@ const Register = () => {
         watch,
         formState: { errors },
     } = useForm();
+    const { createUser, updateUser } = useAuth();
 
     const onSubmit = data => {
-        console.log(data)
+        const { name, email, password } = data;
+        createUser(email, password)
+            .then(() => {
+                updateUser(name)
+            })
+            .catch(error => {
+                console.error(error)
+            })
     }
     return (
         <div className="card-body w-3/4 mx-auto space-y-5">

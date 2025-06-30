@@ -3,8 +3,15 @@ import logo from "../../../assets/logo.png"
 import NavbarStart from '../../../components/Shared/Navbar/NavbarStart';
 import NavbarCenter from '../../../components/Shared/Navbar/NavbarCenter';
 import NavbarEnd from '../../../components/Shared/Navbar/NavbarEnd';
+import useAuth from '../../../hooks/useAuth';
 
 const Navbar = () => {
+    const { user, logout } = useAuth();
+
+    const handleLogout = () => {
+        return logout()
+    }
+
     const navItems = <>
         <li><NavLink to="/">Home</NavLink></li>
         <li><NavLink to="/coverage">Coverage</NavLink></li>
@@ -16,7 +23,7 @@ const Navbar = () => {
         <div className="navbar bg-base-100 shadow-sm">
             <NavbarStart navItems={navItems} logo={logo} />
             <NavbarCenter navItems={navItems} />
-            <NavbarEnd />
+            <NavbarEnd user={user} handleLogout={handleLogout} />
         </div>
     );
 };
