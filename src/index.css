@@ -10,3 +10,6 @@
     --color-primary: #CAEB66;
     --color-secondary: #03373D;
 }
+
+@import 'leaflet/dist/leaflet.css';
+@import 'leaflet-control-geocoder/dist/Control.Geocoder.css';
