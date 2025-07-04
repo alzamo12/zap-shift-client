@@ -20,7 +20,7 @@ const Navbar = () => {
         <li><NavLink to="/be-a-rider">Be a Rider</NavLink></li>
     </>;
     return (
-        <div className="navbar bg-base-100 shadow-sm sticky top-0 z-50">
+        <div className="navbar bg-base-100 shadow-sm">
             <NavbarStart navItems={navItems} logo={logo} />
             <NavbarCenter navItems={navItems} />
             <NavbarEnd user={user} handleLogout={handleLogout} />

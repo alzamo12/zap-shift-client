@@ -6,6 +6,7 @@ import { IoReturnUpBackOutline } from "react-icons/io5";
 const PrivateRoute = ({ children }) => {
     const { user, loading } = useAuth();
     const location = useLocation();
+    console.log(loading)
 
     if (loading) return <LoadingSpinner />
     if (!user) return <Navigate to="/login" state={{ from: location }} replace></Navigate>
