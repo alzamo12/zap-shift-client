@@ -18,6 +18,12 @@ const Navbar = () => {
         <li><NavLink to="/about">About Us</NavLink></li>
         <li><NavLink to="/pricing">Pricing</NavLink></li>
         <li><NavLink to="/be-a-rider">Be a Rider</NavLink></li>
+
+        {
+            user &&
+            <li><NavLink to="/dashboard">Dashboard</NavLink></li>
+        }
+
     </>;
     return (
         <div className="navbar bg-base-100 shadow-sm">

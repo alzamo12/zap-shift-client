@@ -2,10 +2,11 @@ import { useForm } from 'react-hook-form';
 import toast, { Toaster } from 'react-hot-toast';
 import useAuth from '../../hooks/useAuth';
 import calculateCost from '../../utils/SendParcelUtils/CalculateCost';
-import saveParcel from '../../utils/SendParcelUtils/saveParcel';
 import generateTrackingId from '../../utils/SendParcelUtils/generateTrackingId';
 import { useLoaderData } from 'react-router';
 import { useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
 
 const AddParcelForm = () => {
     const { user } = useAuth();
@@ -21,6 +22,7 @@ const AddParcelForm = () => {
                 }
             }
         );
+    const axiosSecure = useAxiosSecure();
     const division = useLoaderData();
     useEffect(() => {
         fetch("/warehouses.json")
@@ -37,22 +39,55 @@ const AddParcelForm = () => {
     const receiverRegion = watch('receiverRegion');
     const weight = watch('weight') || 0;
 
-    const onSubmit = data => {
-        const cost = calculateCost(type, weight);
+    const onSubmit = async (data) => {
+        const { cost, base, perKg } = calculateCost(type, weight);
         const trackingId = generateTrackingId();
         // setCostData({ ...data, cost });
-        const coastData = {
+        const parcelData = {
             ...data,
             cost,
             creation_date: new Date(),
-            tracking_id: trackingId
+            tracking_id: trackingId,
+            payment_status: "unpaid",
+            delivery_status: "not collected",
+            created_by: user?.email
         };
-        toast.custom(t => (
-            <div className="alert shadow-lg flex justify-between items-center">
-                <span>Delivery cost: <strong>${cost}</strong></span>
-                <button onClick={() => { toast.dismiss(t.id); saveParcel(coastData); }} className="btn btn-sm btn-primary">Confirm</button>
-            </div>
-        ));
+        Swal.fire({
+            title: 'Confirm Delivery',
+            html: `
+        <div class="text-left">
+          <p><strong>Type:</strong> ${data.type}</p>
+          <p><strong>Base:</strong> ${base} TK</p>
+          <p><strong>Per KG:</strong> ${perKg} TK</p>
+          <p><strong>Weight:</strong> ${weight} KG</p>
+          <hr class="my-2" />
+          <p><strong>Total:</strong> ${cost} TK</p>
+        </div>
+      `,
+            icon: 'info',
+            showCancelButton: true,
+            confirmButtonText: 'Confirm Booking'
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                const loadingId = toast.loading("Parcel is Processing")
+                try {
+                    const res = await axiosSecure.post("/parcel", parcelData);
+                    if (res.data.success) {
+                        toast.success('Parcel saved successfully!');
+                        console.log(res)
+                    }
+                    console.log("outside condition", res)
+
+                }
+                catch (error) {
+                    console.log(error)
+                }
+                finally {
+                    toast.dismiss(loadingId)
+                }
+
+            }
+        });
     };
 
 
@@ -156,7 +191,7 @@ const AddParcelForm = () => {
                                     <label className="label font-medium text-black">Receiver Name</label>
                                     <select {...register('receiverRegion', { required: true })} className="select select-bordered w-full">
                                         <option value="" disabled>Select Region</option>
-                                        {division.map(r => <option key={r} value={r}>{r}</option>)}
+                                        {division?.map(r => <option key={r} value={r}>{r}</option>)}
                                     </select>
                                 </div>
                                 {/* receiver center */}
